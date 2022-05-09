@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置Spring的IoC，把Service对象配置进来 -->
+    <bean id="accountService" class="com.saihou.service.impl.AccountServiceImpl"></bean>
+
+    <!-- Spring中基于xml的AOP配置-->
+    <!-- 1.把通知的bean交给Spring管理 -->
+    <bean id="logger" class="com.saihou.utils.Logger"></bean>
+    <!-- 2.使用aop:config标签表明开始AOP配置 -->
+    <aop:config>
+        <!-- 3.使用aop:aspect标签表明配置切面 -->
+        <!-- id：给切面提供一个唯一标识 -->
+        <!-- ref：指定通知类的bean的id -->
+        <aop:aspect id="logAdvice" ref="logger">
+            <aop:pointcut id="logPc" expression="execution(* com.saihou.service.*Service.*(..))"/>
+            <!-- 4.aspect标签的内部使用对应标签来配置通知的类型 -->
+            <aop:before method="printLog" pointcut-ref="logPc"></aop:before>
+            <aop:after method="over" pointcut-ref="logPc"></aop:after>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

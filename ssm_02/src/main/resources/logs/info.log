@@ -1,0 +1,9 @@
+2021-04-18 00:03:44.419 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.context.ContextLoader(271) - Root WebApplicationContext: initialization started
+2021-04-18 00:03:46.007 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.context.ContextLoader(307) - Root WebApplicationContext initialized in 1535 ms
+2021-04-18 00:03:46.166 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet(525) - Initializing Servlet 'dispatcherServlet'
+2021-04-18 00:03:48.132 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet(547) - Completed initialization in 1966 ms
+2021-04-18 00:15:45.318 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.context.ContextLoader(271) - Root WebApplicationContext: initialization started
+2021-04-18 00:15:49.492 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.context.ContextLoader(307) - Root WebApplicationContext initialized in 4149 ms
+2021-04-18 00:15:49.588 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet(525) - Initializing Servlet 'dispatcherServlet'
+2021-04-18 00:15:50.774 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet(547) - Completed initialization in 1184 ms
+2021-04-18 00:16:20.067 [http-nio-8080-exec-6] WARN  org.springframework.web.servlet.PageNotFound(1251) - No mapping for GET /account/test

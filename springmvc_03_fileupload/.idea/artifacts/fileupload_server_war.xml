@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="fileupload_server:war">
+    <output-path>$PROJECT_DIR$/../fileupload_server/fileupload_server/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>fileupload_server</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="fileupload_server-1.0.war">
+      <element id="artifact" artifact-name="fileupload_server:war exploded" />
+    </root>
+  </artifact>
+</component>

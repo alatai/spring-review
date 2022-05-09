@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 把对象的创建交给Spring管理 -->
+    <bean id="userDao" class="com.saihou.dao.impl.UserDaoImpl"></bean>
+
+    <!-- Spring对bean的管理细节 -->
+    <!-- 1.创建bean的三种方式 -->
+    <!-- 2.bean对象的作用范围 -->
+    <!-- 3.bean对象的生命周期 -->
+
+    <!-- 1.创建bean的三种方式 -->
+    <!-- 使用默认构造函数创建，在Spring的配置文件中使用bean标签，配以id和class属性之后 -->
+    <!-- 且没有其他属性和标签时，采用的就是默认构造函数创建bean对象，此时如果类中没有默认构造函数，则对象无法创建 -->
+    <!-- <bean id="userService" class="com.saihou.service.impl.UserServiceImpl"></bean> -->
+
+    <!-- 1.创建bean的三种方式 -->
+    <!-- 使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入Spring容器) -->
+    <!-- <bean id="instanceFactory" class="com.saihou.factory.InstanceFactory"></bean> -->
+    <!-- <bean id="userService" factory-bean="instanceFactory" factory-method="getUserService"></bean> -->
+
+    <!-- 1.创建bean的三种方式 -->
+    <!-- 使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入容器) -->
+    <!-- <bean id="userService" class="com.saihou.factory.StaticFactory" factory-method="getUserService"></bean> -->
+
+    <!-- 2.bean对象的作用范围 -->
+    <!-- bean标签的scope属性，用于指定bean的作用范围 -->
+    <!-- singleton: 单例的（默认值) -->
+    <!-- prototype: 多例的 -->
+    <!-- request: 作用于web应用的请求范围 -->
+    <!-- session: 作用于web应用的会话范围 -->
+    <!-- global-session: 作用于集群环境的会话范围（全局范围)，当不是集群环境时就是session -->
+    <!-- <bean id="userService" class="com.saihou.service.impl.UserServiceImpl" scope="singleton"></bean> -->
+
+    <!-- 3.bean对象的生命周期 -->
+    <!-- 单例（与容器相同)：出生：当容器创建时对象出生；存活：只要容器还在，对象一直存活；销毁：容器销毁，对象死亡 -->
+    <!-- 多例（）： -->
+    <bean id="userService" class="com.saihou.service.impl.UserServiceImpl" scope="singleton" init-method="init"
+          destroy-method="destroy"></bean>
+</beans>

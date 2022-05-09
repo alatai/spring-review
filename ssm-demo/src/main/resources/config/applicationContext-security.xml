@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <!-- filter和相关的service bean来实现框架的认证机制 -->
+    <security:http auto-config="true">
+        <!-- 用户登录时跳转到指定登录页面 -->
+        <security:form-login login-page="/login.jsp"
+                             login-processing-url=""
+                             username-parameter="username"
+                             password-parameter="password"
+                             authentication-success-handler-ref="authSuccess"
+                             authentication-failure-url="/login_failure.jsp"/>
+        <!-- 表示用户可以匿名访问到登录页面 -->
+        <security:intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <!-- 权限控制规则 -->
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+    </security:http>
+
+    <!-- 指定登录成功之后跳转页面 -->
+    <bean id="authSuccess" class="com.alatai.common.AuthenticationSuccessHandlerImpl"/>
+
+    <!-- 根据权限控制规则,进行认证 -->
+    <security:authentication-manager>
+        <!-- 实行认证-->
+        <security:authentication-provider>
+            <security:user-service properties="classpath:properties/user.properties"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>
